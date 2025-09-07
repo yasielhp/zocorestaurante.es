@@ -1,7 +1,6 @@
 /// <reference types="astro/client" />
-/// <reference path="../.astro/types.d.ts" />
 
 declare module "@/*" {
-  const content: any;
+  const content: unknown;
   export default content;
 }

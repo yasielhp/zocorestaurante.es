@@ -71,6 +71,7 @@ export default [
       '*.config.ts',
       'public/',
       'pnpm-lock.yaml',
+      'src/env.d.ts',
     ],
   },
 ];
