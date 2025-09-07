@@ -1,23 +1,22 @@
 @import 'tailwindcss';
 
-/* Custom global styles for Zoco Restaurant */
-html {
-  font-family: system-ui, sans-serif;
-  scroll-behavior: smooth;
-}
+@theme {
+  /* Typography */
+  --font-playfair: 'Playfair Display', serif;
+  --font-nunito-sans: 'Nunito Sans', sans-serif;
 
-body {
-  margin: 0;
-  background-color: #fbbf24;
-  color: #451a03;
-}
-
-/* Performance optimizations */
-* {
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
+  /* Colors */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-light-sand: #eae6de;
+  --color-ivory-sand: #f3f1ec;
+  --color-dark-gray: #4b4b4b;
+  --color-greenish-gray: #8ca290;
+  --color-warm-gold: #a87c2d;
+  --color-dark-gold: #8c6723;
+  --color-burnt-red: #b55239;
+  --color-deep-terracotta: #964227;
+  --color-petrol-blue: #2f4c57;
+  --color-dark-green-charcoal: #16363c;
+  --color-almost-black-gray: #1a1a1a;
 }
