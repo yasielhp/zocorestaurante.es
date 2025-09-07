@@ -14,7 +14,7 @@ const translatePath = useTranslatedPath(lang);
 ---
 
 <section id="hero" class="flex h-dvh flex-col items-center justify-center px-4">
-  <div class="flex flex-col items-center justify-center">
+  <div class="z-20 flex flex-col items-center justify-center pt-48">
     <img
       id="logo"
       src="/logo.webp"
@@ -45,7 +45,7 @@ const translatePath = useTranslatedPath(lang);
       />
     </div>
     <div
-    id="hero-reviews"
+      id="hero-reviews"
       class="tex-sm text-ivory-sand mt-9 flex gap-2 font-normal md:mt-5 md:text-base"
     >
       <div class="text-warm-gold flex">
@@ -55,18 +55,43 @@ const translatePath = useTranslatedPath(lang);
       <p>{t('hero.reviews')}</p>
     </div>
     <div
+      id="hero-mouse"
       class="text-warm-gold flex w-full items-end justify-center pt-20 md:pt-28"
     >
       <Mouse />
     </div>
   </div>
-  <img
-    id="hero-arco"
-    src="/img/hero-arco.webp"
-    class="absolute top-0 h-dvh w-full object-cover"
-    alt="Hero Arco"
-  />
+  <div id="hero-arco-container" class="absolute top-0 h-dvh w-full">
+    <img
+      id="hero-arco"
+      src="/img/hero-arco.webp"
+      class="h-full w-full object-cover"
+      alt="Hero Arco"
+    />
+  </div>
 </section>
+
+<style>
+  #hero-arco-container {
+    transform-origin: center center;
+  }
+
+  #hero-arco-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      #1a1a1a 0%,
+      rgba(26, 26, 26, 0.8) 15%,
+      transparent 40%,
+      transparent 60%,
+      rgba(26, 26, 26, 0.8) 85%,
+      #1a1a1a 100%
+    );
+    z-index: 1;
+  }
+</style>
 
 <script>
   import { gsap } from 'gsap';
@@ -75,50 +100,64 @@ const translatePath = useTranslatedPath(lang);
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener('DOMContentLoaded', function () {
-    const heroArco = document.getElementById('hero-arco');
+    const heroSection = document.getElementById('hero');
     const logo = document.getElementById('logo');
     const heroTitle = document.getElementById('hero-title');
     const heroButtons = document.getElementById('hero-buttons');
     const heroReviews = document.getElementById('hero-reviews');
+    const heroMouse = document.getElementById('hero-mouse');
+
+    // Timeline principal con pin
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroSection,
+        start: 'top top',
+        end: '+=150%', // Extiende la duración del pin
+        scrub: 1,
+        pin: true, // Mantiene el hero fijo
+        anticipatePin: 1,
+      },
+    });
 
     // Animación del arco (zoom)
-    if (heroArco) {
-      gsap.fromTo(
-        heroArco,
+    const heroArcoContainer = document.getElementById('hero-arco-container');
+    if (heroArcoContainer) {
+      tl.fromTo(
+        heroArcoContainer,
         {
           scale: 1,
           transformOrigin: 'center center',
         },
         {
-          scale: 2,
+          scale: 3,
+          duration: 1,
           ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
+        },
+        0
       );
     }
 
     // Animaciones de elementos de contenido (fade out con stagger)
-    const contentElements = [logo, heroTitle, heroButtons, heroReviews].filter(Boolean);
-    
+    const contentElements = [
+      logo,
+      heroTitle,
+      heroButtons,
+      heroReviews,
+      heroMouse,
+    ].filter(Boolean);
+
     contentElements.forEach((element, index) => {
       if (element) {
-        gsap.to(element, {
-          opacity: 0,
-          y: -50,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: '50% top',
-            scrub: true,
+        tl.to(
+          element,
+          {
+            opacity: 0,
+            y: -50,
+            duration: 0.3,
+            ease: 'power2.out',
           },
-          delay: index * 0.1, // Stagger entre elementos
-        });
+          index * 0.1 // Stagger de 0.1s entre cada elemento
+        );
       }
     });
   });

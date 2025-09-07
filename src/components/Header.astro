@@ -38,22 +38,24 @@ import MainMenu from '@/components/MainMenu.astro';
     // Hide header when hero is visible
     if (heroElement && header) {
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
+        entries => {
+          entries.forEach(entry => {
             if (entry.isIntersecting) {
               // Hero is visible - hide header
               header.style.opacity = '0';
+              header.style.display = 'none';
               header.style.pointerEvents = 'none';
             } else {
               // Hero is not visible - show header
               header.style.opacity = '1';
+              header.style.display = 'flex';
               header.style.pointerEvents = 'auto';
             }
           });
         },
         {
           threshold: 0.1, // Trigger when 10% of hero is visible
-          rootMargin: '0px 0px -50px 0px' // Adjust trigger point
+          rootMargin: '0px 0px -50px 0px', // Adjust trigger point
         }
       );
 
