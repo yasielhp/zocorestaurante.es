@@ -14,7 +14,9 @@ export default defineConfig({
   site: "https://zocorestaurant.es",
   
   image: {
-    service: "compile",
+    service: {
+      entrypoint: "astro/assets/services/noop"
+    },
   },
 
   i18n: {
