@@ -10,7 +10,7 @@ const route = getRouteFromUrl(Astro.url);
 const currentLang = getLangFromUrl(Astro.url);
 ---
 
-<ul class="flex gap-4">
+<ul class="flex border-3 border-warm-gold uppercase rounded-[8px]">
   {
     Object.entries(languages).map(([lang, label]) => {
       const translatePath = useTranslatedPath(lang as keyof typeof languages);
@@ -19,10 +19,10 @@ const currentLang = getLangFromUrl(Astro.url);
         <li>
           <a
             href={translatePath(`/${route ? route : ''}`)}
-            class={`px-3 py-2 rounded transition-colors ${
+            class={`px-1.5 py-1 font-bold border-0 transition-colors ${
               isCurrentLang
-                ? 'bg-amber-300 text-amber-900 font-semibold'
-                : 'text-amber-300 hover:text-amber-100 hover:bg-amber-700'
+                ? 'text-white bg-warm-gold hover:text-white/80 rounded-[8px]'
+                : 'text-warm-gold hover:text-warm-gold/80'
             }`}
             aria-current={isCurrentLang ? 'page' : undefined}
           >
