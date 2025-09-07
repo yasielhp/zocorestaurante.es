@@ -1,6 +1,6 @@
 ---
-import Layout from '@/layouts/Layout.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import Layout from '@/layouts/Layout.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -8,28 +8,11 @@ const t = useTranslations(lang);
 
 <Layout title={t('site.title')} description={t('site.description')}>
   <section class="container mx-auto px-4 py-16 text-center">
-    <h1 class="text-5xl md:text-6xl font-bold text-amber-900 mb-6">
+    <h1 class="mb-6 text-5xl font-bold text-amber-900 md:text-6xl">
       {t('home.title')}
     </h1>
-    <p class="text-xl md:text-2xl text-amber-800 mb-8 max-w-2xl mx-auto">
+    <p class="mx-auto mb-8 max-w-2xl text-xl text-amber-800 md:text-2xl">
       {t('home.subtitle')}
     </p>
-    
-    <div class="grid md:grid-cols-3 gap-8 mt-16">
-      <div class="bg-amber-100 p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold text-amber-900 mb-4">Auténtica Cocina Árabe</h3>
-        <p class="text-amber-800">Platos tradicionales preparados con recetas ancestrales</p>
-      </div>
-      
-      <div class="bg-amber-100 p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold text-amber-900 mb-4">Ingredientes Frescos</h3>
-        <p class="text-amber-800">Solo utilizamos los mejores ingredientes de temporada</p>
-      </div>
-      
-      <div class="bg-amber-100 p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold text-amber-900 mb-4">Ambiente Único</h3>
-        <p class="text-amber-800">Disfruta de una experiencia gastronómica inigualable</p>
-      </div>
-    </div>
   </section>
 </Layout>

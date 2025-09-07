@@ -1,31 +1,56 @@
 ---
-// Footer component
+import NavLegal from '@/components/NavLegal.astro';
+import NavSocial from '@/components/NavSocial.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<footer class="bg-amber-900 text-amber-100 py-8">
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-      <div>
-        <h3 class="text-xl font-bold text-amber-300 mb-4">Zoco Restaurant</h3>
-        <p class="text-amber-200">Auténtica experiencia culinaria árabe</p>
-      </div>
-      
-      <div>
-        <h4 class="font-semibold text-amber-300 mb-3">Contacto</h4>
-        <p class="text-amber-200 mb-1">Tel: +34 123 456 789</p>
-        <p class="text-amber-200 mb-1">info@zocorestaurant.es</p>
-        <p class="text-amber-200">Calle Principal 123, Madrid</p>
-      </div>
-      
-      <div>
-        <h4 class="font-semibold text-amber-300 mb-3">Horarios</h4>
-        <p class="text-amber-200 mb-1">Lun - Dom: 12:00 - 00:00</p>
-        <p class="text-amber-200">Cocina: 13:00 - 23:30</p>
-      </div>
-    </div>
-    
-    <div class="border-t border-amber-800 mt-8 pt-6 text-center">
-      <p class="text-amber-200">&copy; 2025 Zoco Restaurant. Todos los derechos reservados.</p>
+<footer class="bg-footer bg-cover bg-center bg-no-repeat px-4">
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-4 pt-16 pb-6 text-center md:gap-2.5 md:pt-28 md:pb-28"
+  >
+    <a href="#">
+      <img
+        width="120px"
+        height="88px"
+        src="/logo.webp"
+        alt="Zoco Restaurant"
+        class="pointer-events-none mb-4 select-none"
+      />
+    </a>
+    <a
+      class="hover:text-warm-gold transition-colors"
+      href="tel:822904911"
+      target="_blank">822 90 49 11</a
+    >
+    <a
+      class="hover:text-warm-gold transition-colors"
+      href="mailto:info@zocoreataurant.es"
+      target="_blank">info@zocorestaurant.es</a
+    >
+    <a
+      class="hover:text-warm-gold transition-colors"
+      href="https://share.google/btPwRooyLphPPGBrX"
+      target="_blank">{t('footer.address')}</a
+    >
+    <p class="font-playfair mt-7 text-3xl font-bold uppercase md:mt-11">
+      {t('footer.schedule.title')}
+    </p>
+    <p class="text-lg font-bold">
+      {t('footer.schedule.hours')}:<span class="font-normal"> 13:00 22:30</span>
+    </p>
+    <p
+      class="font-playfair mt-12 mb-7 text-5xl font-bold uppercase md:mt-16 md:mb-11 md:max-w-3xl md:text-7xl"
+    >
+      {t('footer.cta')}
+    </p>
+    <NavSocial />
+    <div
+      class="border-dark-gray mt-10 flex w-full justify-center border-t pt-6"
+    >
+      <NavLegal />
     </div>
   </div>
 </footer>

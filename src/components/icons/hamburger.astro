@@ -1,0 +1,63 @@
+<button class="menu" type="button" aria-label="Menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<style>
+  .menu {
+    width: 38px;
+    height: 34px;
+    position: relative;
+    background: transparent;
+    border: 3px solid #a87d2e;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    padding: 10px 8px;
+    border-radius: 6px;
+  }
+
+  .menu span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: calc(100% - 6px);
+    background: #a87d2e;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+    left: 3px;
+  }
+
+  .menu span {
+    border-radius: 1.5px;
+  }
+
+  .menu span:nth-child(1) {
+    top: 6px;
+  }
+
+  .menu span:nth-child(2) {
+    top: 12px;
+  }
+
+  .menu span:nth-child(3) {
+    top: 18px;
+  }
+
+  .menu.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 12px;
+  }
+
+  .menu.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 12px;
+  }
+</style>
+

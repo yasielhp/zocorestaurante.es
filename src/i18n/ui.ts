@@ -38,6 +38,11 @@ export const ui = {
     'navLegal.cookies': 'Cookies',
     'home.title': 'Bienvenido a Zoco Restaurant',
     'home.subtitle': 'Tu sitio web está listo para comenzar.',
+    'footer.address':
+      'Avenida San Francisco, 6. Centro Comercial Pasarela, Local 37-40, Los Cristianos.',
+    'footer.schedule.title': 'Horario de apertura',
+    'footer.schedule.hours': 'Lunes - Domingo',
+    'footer.cta': '¡Esperamos su visita!',
   },
   en: {
     'site.title': 'Zoco Restaurant - New concept of Arabic cuisine',
@@ -51,5 +56,10 @@ export const ui = {
     'navLegal.cookies': 'Cookies',
     'home.title': 'Welcome to Zoco Restaurant',
     'home.subtitle': 'Your website is ready to go.',
+    'footer.address':
+      'Avenida San Francisco, 6. Centro Comercial Pasarela, Local 37-40, Los Cristianos.',
+    'footer.schedule.title': 'Opening Hours',
+    'footer.schedule.hours': 'Monday - Sunday',
+    'footer.cta': 'We look forward to your visit!',
   },
 } as const;

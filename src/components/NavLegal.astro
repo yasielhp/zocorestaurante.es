@@ -10,19 +10,28 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<ul>
+<ul class="flex gap-11">
   <li>
-    <a href={translatePath('/legal/')}>
+    <a
+      class="hover:text-warm-gold transition-colors"
+      href={translatePath('/legal/')}
+    >
       {t('navLegal.legal')}
     </a>
   </li>
   <li>
-    <a href={translatePath('/privacy/')}>
+    <a
+      class="hover:text-warm-gold transition-colors"
+      href={translatePath('/privacy/')}
+    >
       {t('navLegal.privacy')}
     </a>
   </li>
   <li>
-    <a href={translatePath('/cookies/')}>
+    <a
+      class="hover:text-warm-gold transition-colors"
+      href={translatePath('/cookies/')}
+    >
       {t('navLegal.cookies')}
     </a>
   </li>

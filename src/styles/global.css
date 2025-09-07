@@ -19,4 +19,8 @@
   --color-petrol-blue: #2f4c57;
   --color-dark-green-charcoal: #16363c;
   --color-almost-black-gray: #1a1a1a;
+
+  --background-image-footer:
+    linear-gradient(179deg, #1a1a1a 0.89%, rgba(26, 26, 26, 0.8) 160.21%),
+    url('/img/bg-footer.webp');
 }
