@@ -10,6 +10,7 @@ export const routes = {
   es: {
     home: '/',
     menu: '/menu/',
+    reserve: '/reservar/',
     about: '/sobre-nosotros/',
     legal: '/legal/',
     privacy: '/privacidad/',
@@ -18,6 +19,7 @@ export const routes = {
   en: {
     home: '/',
     menu: '/menu/',
+    reserve: '/reserve/',
     about: '/about/',
     legal: '/legal/',
     privacy: '/privacy/',
@@ -30,6 +32,10 @@ export const ui = {
     'site.title': 'Zoco Restaurante - Nuevo concepto de cocina árabe',
     'site.description':
       'Comida tradicional árabe con experiencia culinaria para una experiencia gastronómica inigualable.',
+    'hero.title': 'Nuevo concepto de cocina árabe',
+    'hero.btnLeft': 'Reservar mesa',
+    'hero.btnRight': 'Ver carta',
+    'hero.reviews': 'Más de 1200 reseñas',
     'navMain.home': 'Inicio',
     'navMain.menu': 'Menú',
     'navMain.about': 'Acerca de',
@@ -48,6 +54,10 @@ export const ui = {
     'site.title': 'Zoco Restaurant - New concept of Arabic cuisine',
     'site.description':
       'Traditional Arabic cuisine with a culinary experience for an unparalleled gastronomic experience.',
+    'hero.title': 'New concept of Arabic cuisine',
+    'hero.btnLeft': 'Book a table',
+    'hero.btnRight': 'View menu',
+    'hero.reviews': 'Over 1200 reviews',
     'navMain.home': 'Home',
     'navMain.menu': 'Menu',
     'navMain.about': 'About',

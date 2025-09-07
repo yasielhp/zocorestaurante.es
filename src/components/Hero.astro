@@ -1,0 +1,125 @@
+---
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '../i18n/utils';
+import Button from './Button.astro';
+import Mouse from './icons/mouse.astro';
+import Start from './icons/start.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<section id="hero" class="flex h-dvh flex-col items-center justify-center px-4">
+  <div class="flex flex-col items-center justify-center">
+    <img
+      id="logo"
+      src="/logo.webp"
+      alt="Zoco Restaurant"
+      class="pointer-events-none object-contain select-none md:mb-8"
+    />
+    <p
+      id="hero-title"
+      class="font-playfair mb-5 max-w-3xs text-center text-3xl leading-9 font-bold md:max-w-96 md:text-5xl md:leading-14"
+    >
+      {t('hero.title')}
+    </p>
+    <div
+      id="hero-buttons"
+      class="flex w-full flex-col gap-4 md:max-w-96 md:flex-row"
+    >
+      <Button
+        style="primary"
+        text={t('hero.btnLeft')}
+        class="w-full"
+        href={translatePath('/reserve')}
+      />
+      <Button
+        style="secondary"
+        text={t('hero.btnRight')}
+        class="w-full"
+        href={translatePath('/menu')}
+      />
+    </div>
+    <div
+    id="hero-reviews"
+      class="tex-sm text-ivory-sand mt-9 flex gap-2 font-normal md:mt-5 md:text-base"
+    >
+      <div class="text-warm-gold flex">
+        {Array.from({ length: 5 }, (_, i) => <Start key={i} />)}
+      </div>
+      <p>4.8/5 •</p>
+      <p>{t('hero.reviews')}</p>
+    </div>
+    <div
+      class="text-warm-gold flex w-full items-end justify-center pt-20 md:pt-28"
+    >
+      <Mouse />
+    </div>
+  </div>
+  <img
+    id="hero-arco"
+    src="/img/hero-arco.webp"
+    class="absolute top-0 h-dvh w-full object-cover"
+    alt="Hero Arco"
+  />
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const heroArco = document.getElementById('hero-arco');
+    const logo = document.getElementById('logo');
+    const heroTitle = document.getElementById('hero-title');
+    const heroButtons = document.getElementById('hero-buttons');
+    const heroReviews = document.getElementById('hero-reviews');
+
+    // Animación del arco (zoom)
+    if (heroArco) {
+      gsap.fromTo(
+        heroArco,
+        {
+          scale: 1,
+          transformOrigin: 'center center',
+        },
+        {
+          scale: 2,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    }
+
+    // Animaciones de elementos de contenido (fade out con stagger)
+    const contentElements = [logo, heroTitle, heroButtons, heroReviews].filter(Boolean);
+    
+    contentElements.forEach((element, index) => {
+      if (element) {
+        gsap.to(element, {
+          opacity: 0,
+          y: -50,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: '50% top',
+            scrub: true,
+          },
+          delay: index * 0.1, // Stagger entre elementos
+        });
+      }
+    });
+  });
+</script>

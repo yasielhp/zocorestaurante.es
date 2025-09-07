@@ -5,7 +5,7 @@ import MainMenu from '@/components/MainMenu.astro';
 ---
 
 <header
-  class="bg-almost-black-gray/60 sticky top-0 z-10 px-4 pt-6 pb-4 backdrop-blur-md"
+  class="bg-almost-black-gray/60 sticky top-0 z-10 px-4 pt-6 pb-4 backdrop-blur-md transition-opacity duration-300"
 >
   <nav class="container mx-auto flex items-center justify-between">
     <Hamburger />
@@ -16,9 +16,12 @@ import MainMenu from '@/components/MainMenu.astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('header') as HTMLElement;
     const menuToggle = document.querySelector('.menu');
     const mainMenu = document.querySelector('aside') as HTMLElement;
+    const heroElement = document.querySelector('#hero') as HTMLElement;
 
+    // Menu toggle functionality
     menuToggle?.addEventListener('click', function () {
       const isOpen = menuToggle.classList.contains('open');
       menuToggle.classList.toggle('open');
@@ -31,5 +34,30 @@ import MainMenu from '@/components/MainMenu.astro';
         }
       }
     });
+
+    // Hide header when hero is visible
+    if (heroElement && header) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Hero is visible - hide header
+              header.style.opacity = '0';
+              header.style.pointerEvents = 'none';
+            } else {
+              // Hero is not visible - show header
+              header.style.opacity = '1';
+              header.style.pointerEvents = 'auto';
+            }
+          });
+        },
+        {
+          threshold: 0.1, // Trigger when 10% of hero is visible
+          rootMargin: '0px 0px -50px 0px' // Adjust trigger point
+        }
+      );
+
+      observer.observe(heroElement);
+    }
   });
 </script>

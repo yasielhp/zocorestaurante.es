@@ -1,0 +1,40 @@
+<svg
+  id="mouse-icon"
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M24.0014 42C31.398 42 37.3934 36.3606 37.3934 29.4058L37.3894 18.5903C37.3876 11.6355 31.392 6 23.9994 6C16.601 6 10.6055 11.6394 10.6075 18.5942L10.6114 29.4116C10.6114 36.3646 16.6068 42 24.0014 42Z"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path
+    id="mouse-scroll"
+    d="M24.004 15.3438V19.3894"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>
+
+<style>
+  #mouse-scroll {
+    animation: scroll 1.5s infinite;
+  }
+  @keyframes scroll {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+</style>

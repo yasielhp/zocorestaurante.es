@@ -1,0 +1,19 @@
+---
+export interface Props {
+  text: string;
+  href: string;
+  target?: string;
+  style?: 'primary' | 'secondary';
+  class?: string;
+}
+---
+
+<a
+  href={Astro.props.href}
+  target={Astro.props.target}
+  class={`inline-block py-3 px-5 border-2 text-center rounded-lg border-warm-gold uppercase font-bold transition-all duration-300 ${
+    Astro.props.style === 'primary'
+      ? 'bg-warm-gold hover:opacity-80'
+      : 'bg-transparent text-warm-gold hover:bg-white hover:border-white'
+  } ${Astro.props.class ?? ''}`}>{Astro.props.text}</a
+>

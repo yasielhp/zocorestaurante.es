@@ -1,4 +1,6 @@
 ---
+import About from '@/components/About.astro';
+import Hero from '@/components/Hero.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import Layout from '@/layouts/Layout.astro';
 
@@ -7,12 +9,6 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={t('site.title')} description={t('site.description')}>
-  <section class="container mx-auto px-4 py-16 text-center">
-    <h1 class="mb-6 text-5xl font-bold text-amber-900 md:text-6xl">
-      {t('home.title')}
-    </h1>
-    <p class="mx-auto mb-8 max-w-2xl text-xl text-amber-800 md:text-2xl">
-      {t('home.subtitle')}
-    </p>
-  </section>
+  <Hero />
+  <About />
 </Layout>
