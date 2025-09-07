@@ -1,0 +1,35 @@
+---
+import { languages } from '@/i18n/ui';
+import {
+  getLangFromUrl,
+  getRouteFromUrl,
+  useTranslatedPath,
+} from '@/i18n/utils';
+
+const route = getRouteFromUrl(Astro.url);
+const currentLang = getLangFromUrl(Astro.url);
+---
+
+<ul class="flex gap-4">
+  {
+    Object.entries(languages).map(([lang, label]) => {
+      const translatePath = useTranslatedPath(lang as keyof typeof languages);
+      const isCurrentLang = lang === currentLang;
+      return (
+        <li>
+          <a
+            href={translatePath(`/${route ? route : ''}`)}
+            class={`px-3 py-2 rounded transition-colors ${
+              isCurrentLang
+                ? 'bg-amber-300 text-amber-900 font-semibold'
+                : 'text-amber-300 hover:text-amber-100 hover:bg-amber-700'
+            }`}
+            aria-current={isCurrentLang ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

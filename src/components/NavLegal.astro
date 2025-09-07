@@ -1,0 +1,29 @@
+---
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<ul>
+  <li>
+    <a href={translatePath('/legal/')}>
+      {t('navLegal.legal')}
+    </a>
+  </li>
+  <li>
+    <a href={translatePath('/privacy/')}>
+      {t('navLegal.privacy')}
+    </a>
+  </li>
+  <li>
+    <a href={translatePath('/cookies/')}>
+      {t('navLegal.cookies')}
+    </a>
+  </li>
+</ul>

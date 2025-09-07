@@ -1,0 +1,7 @@
+name = "zocorestaurant"
+compatibility_date = "2023-08-14"
+
+[[kv_namespaces]]
+binding = "SESSION"
+preview_id = "your-preview-kv-id"
+id = "your-production-kv-id"

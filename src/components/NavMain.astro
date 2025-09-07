@@ -1,0 +1,29 @@
+---
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<ul>
+  <li>
+    <a href={translatePath('/home/')}>
+      {t('navMain.home')}
+    </a>
+  </li>
+  <li>
+    <a href={translatePath('/about/')}>
+      {t('navMain.about')}
+    </a>
+  </li>
+  <li>
+    <a href={translatePath('/menu/')}>
+      {t('navMain.menu')}
+    </a>
+  </li>
+</ul>
