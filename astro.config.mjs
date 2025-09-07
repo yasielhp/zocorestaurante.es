@@ -1,9 +1,9 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import partytown from "@astrojs/partytown";
-import tailwindcss from "@tailwindcss/vite";
-import sitemap from "@astrojs/sitemap";
 import cloudflare from "@astrojs/cloudflare";
+import partytown from "@astrojs/partytown";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig, fontProviders } from "astro/config";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -12,7 +12,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: "https://zocorestaurant.es",
-  
   image: {
     service: {
       entrypoint: "astro/assets/services/noop"
@@ -44,4 +43,17 @@ export default defineConfig({
   ],
 
   adapter: cloudflare(),
+  experimental: {
+    fonts: [{
+      provider: fontProviders.google(),
+      name: 'Playfair',
+      cssVariable: '--font-playfair',
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Nunito Sans',
+      cssVariable: '--font-nunito-sans',
+    }
+  ]
+  }
 });
