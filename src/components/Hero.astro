@@ -72,6 +72,10 @@ const translatePath = useTranslatedPath(lang);
 </section>
 
 <style>
+  #hero {
+    overflow: hidden; /* Previene scroll dentro del hero */
+  }
+
   #hero-arco-container {
     transform-origin: center center;
   }
@@ -112,10 +116,12 @@ const translatePath = useTranslatedPath(lang);
       scrollTrigger: {
         trigger: heroSection,
         start: 'top top',
-        end: '+=150%', // Extiende la duración del pin
+        end: '+=100vh', // Usa viewport height en lugar de porcentaje
         scrub: 1,
-        pin: true, // Mantiene el hero fijo
+        pin: true,
         anticipatePin: 1,
+        pinSpacing: false, // Evita el espacio extra que genera el pin
+        invalidateOnRefresh: true, // Recalcula en resize
       },
     });
 
